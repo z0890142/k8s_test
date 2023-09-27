@@ -1,0 +1,13 @@
+node:
+  cluster: dma-cluster
+  id: dma_id1
+dynamic_resources:
+  cds_config:
+    path: /var/lib/envoy/envoy-cds.yaml
+  lds_config:
+    path: /var/lib/envoy/envoy-lds.yaml
+admin:
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 19000

@@ -1,0 +1,29 @@
+resources:
+- '@type': type.googleapis.com/envoy.config.cluster.v3.Cluster
+  connect_timeout: 1s
+  load_assignment:
+    cluster_name: grafana
+    endpoints:
+    - lb_endpoints:
+      - endpoint:
+          address:
+            socket_address:
+              address: grafana
+              port_value: 3000
+  max_requests_per_connection: 10
+  name: grafana
+  type: STRICT_DNS
+- '@type': type.googleapis.com/envoy.config.cluster.v3.Cluster
+  connect_timeout: 1s
+  load_assignment:
+    cluster_name: prometheus
+    endpoints:
+    - lb_endpoints:
+      - endpoint:
+          address:
+            socket_address:
+              address: prometheus
+              port_value: 9090
+  max_requests_per_connection: 10
+  name: prometheus
+  type: STRICT_DNS
